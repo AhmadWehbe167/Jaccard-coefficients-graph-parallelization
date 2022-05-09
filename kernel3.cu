@@ -104,8 +104,8 @@ void jaccard_gpu3(CSRGraph* csrGraph, CSRGraph* csrGraph_d, COOMatrix* cooMatrix
     unsigned int* counter;
     cudaMalloc((void**) &numCommonNeighbors, numBlocks*csrGraph->numVertices*sizeof(unsigned int)+1);
     cudaMalloc((void**) &neighborsOfNeighbors, numBlocks*csrGraph->numVertices*sizeof(unsigned int)+1);
-    cudaMalloc((void**) &counter, 2*sizeof(unsigned int));
-    cudaMemset(counter, 0, 2*sizeof(unsigned int));
+    cudaMalloc((void**) &counter, sizeof(unsigned int));
+    cudaMemset(counter, 0, sizeof(unsigned int));
     cudaDeviceSynchronize();
     stopTime(&timer);
     printElapsedTime(timer, "Arrays allocation time");
